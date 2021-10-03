@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>None</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Topic 1", "label": "Topic 1", "shape": "dot", "title": "Beschreibung Topic "}, {"font": {"color": "white"}, "id": "Projekt 1", "label": "Projekt 1", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 2", "label": "Projekt 2", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 3", "label": "Projekt 3", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 4", "label": "Projekt 4", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 5", "label": "Projekt 5", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 6", "label": "Projekt 6", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 7", "label": "Projekt 7", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Topic 2", "label": "Topic 2", "shape": "dot", "title": "Beschreibung Topic "}, {"font": {"color": "white"}, "id": "Projekt 8", "label": "Projekt 8", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 9", "label": "Projekt 9", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 10", "label": "Projekt 10", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 11", "label": "Projekt 11", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 12", "label": "Projekt 12", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 13", "label": "Projekt 13", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Topic 3", "label": "Topic 3", "shape": "dot", "title": "Beschreibung Topic "}, {"font": {"color": "white"}, "id": "Projekt 14", "label": "Projekt 14", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 15", "label": "Projekt 15", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 16", "label": "Projekt 16", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 17", "label": "Projekt 17", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 18", "label": "Projekt 18", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 19", "label": "Projekt 19", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 20", "label": "Projekt 20", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 21", "label": "Projekt 21", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 22", "label": "Projekt 22", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 23", "label": "Projekt 23", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 24", "label": "Projekt 24", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 25", "label": "Projekt 25", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 26", "label": "Projekt 26", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 27", "label": "Projekt 27", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 28", "label": "Projekt 28", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Projekt 29", "label": "Projekt 29", "shape": "dot", "title": "Beschreibung Projekt"}, {"font": {"color": "white"}, "id": "Organisation 1", "label": "Organisation 1", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 2", "label": "Organisation 2", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 3", "label": "Organisation 3", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 4", "label": "Organisation 4", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 5", "label": "Organisation 5", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 6", "label": "Organisation 6", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 7", "label": "Organisation 7", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 8", "label": "Organisation 8", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 9", "label": "Organisation 9", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 10", "label": "Organisation 10", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 11", "label": "Organisation 11", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 12", "label": "Organisation 12", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 13", "label": "Organisation 13", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 14", "label": "Organisation 14", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 15", "label": "Organisation 15", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 16", "label": "Organisation 16", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 17", "label": "Organisation 17", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 18", "label": "Organisation 18", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 19", "label": "Organisation 19", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 20", "label": "Organisation 20", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 21", "label": "Organisation 21", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 22", "label": "Organisation 22", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 23", "label": "Organisation 23", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 24", "label": "Organisation 24", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 25", "label": "Organisation 25", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 26", "label": "Organisation 26", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 27", "label": "Organisation 27", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 28", "label": "Organisation 28", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 29", "label": "Organisation 29", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Organisation 30", "label": "Organisation 30", "shape": "dot", "title": "Beschreibung Organisation"}, {"font": {"color": "white"}, "id": "Projekt 30", "label": "Projekt 30", "shape": "dot", "title": "Beschreibung Projekt"}]);
+        edges = new vis.DataSet([{"from": "Projekt 1", "to": "Organisation 1", "value": 1}, {"from": "Projekt 2", "to": "Organisation 2", "value": 1}, {"from": "Projekt 3", "to": "Organisation 3", "value": 1}, {"from": "Projekt 4", "to": "Organisation 4", "value": 1}, {"from": "Projekt 5", "to": "Organisation 5", "value": 1}, {"from": "Projekt 6", "to": "Organisation 6", "value": 1}, {"from": "Projekt 7", "to": "Organisation 7", "value": 1}, {"from": "Projekt 8", "to": "Organisation 8", "value": 1}, {"from": "Projekt 9", "to": "Organisation 9", "value": 1}, {"from": "Projekt 10", "to": "Organisation 10", "value": 1}, {"from": "Projekt 11", "to": "Organisation 11", "value": 1}, {"from": "Projekt 12", "to": "Organisation 12", "value": 1}, {"from": "Projekt 13", "to": "Organisation 13", "value": 1}, {"from": "Projekt 14", "to": "Organisation 14", "value": 1}, {"from": "Projekt 15", "to": "Organisation 15", "value": 1}, {"from": "Projekt 16", "to": "Organisation 16", "value": 1}, {"from": "Projekt 17", "to": "Organisation 17", "value": 1}, {"from": "Projekt 18", "to": "Organisation 18", "value": 1}, {"from": "Projekt 19", "to": "Organisation 19", "value": 1}, {"from": "Projekt 20", "to": "Organisation 20", "value": 1}, {"from": "Projekt 21", "to": "Organisation 21", "value": 1}, {"from": "Projekt 22", "to": "Organisation 22", "value": 1}, {"from": "Projekt 23", "to": "Organisation 23", "value": 1}, {"from": "Projekt 24", "to": "Organisation 24", "value": 1}, {"from": "Projekt 25", "to": "Organisation 25", "value": 1}, {"from": "Projekt 26", "to": "Organisation 26", "value": 1}, {"from": "Projekt 27", "to": "Organisation 27", "value": 1}, {"from": "Projekt 28", "to": "Organisation 28", "value": 1}, {"from": "Projekt 29", "to": "Organisation 29", "value": 1}, {"from": "Projekt 30", "to": "Organisation 30", "value": 1}, {"from": "Projekt 1", "to": "Topic 1", "value": 1}, {"from": "Projekt 2", "to": "Topic 1", "value": 1}, {"from": "Projekt 3", "to": "Topic 1", "value": 1}, {"from": "Projekt 4", "to": "Topic 1", "value": 1}, {"from": "Projekt 5", "to": "Topic 1", "value": 1}, {"from": "Projekt 6", "to": "Topic 1", "value": 1}, {"from": "Projekt 7", "to": "Topic 1", "value": 1}, {"from": "Projekt 8", "to": "Topic 1", "value": 1}, {"from": "Projekt 9", "to": "Topic 1", "value": 1}, {"from": "Projekt 10", "to": "Topic 2", "value": 1}, {"from": "Projekt 11", "to": "Topic 2", "value": 1}, {"from": "Projekt 12", "to": "Topic 2", "value": 1}, {"from": "Projekt 13", "to": "Topic 2", "value": 1}, {"from": "Projekt 14", "to": "Topic 2", "value": 1}, {"from": "Projekt 15", "to": "Topic 2", "value": 1}, {"from": "Projekt 16", "to": "Topic 2", "value": 1}, {"from": "Projekt 17", "to": "Topic 2", "value": 1}, {"from": "Projekt 18", "to": "Topic 2", "value": 1}, {"from": "Projekt 19", "to": "Topic 2", "value": 1}, {"from": "Projekt 20", "to": "Topic 2", "value": 1}, {"from": "Projekt 21", "to": "Topic 2", "value": 1}, {"from": "Projekt 22", "to": "Topic 2", "value": 1}, {"from": "Projekt 23", "to": "Topic 3", "value": 1}, {"from": "Projekt 24", "to": "Topic 3", "value": 1}, {"from": "Projekt 25", "to": "Topic 3", "value": 1}, {"from": "Projekt 26", "to": "Topic 3", "value": 1}, {"from": "Projekt 27", "to": "Topic 3", "value": 1}, {"from": "Projekt 28", "to": "Topic 3", "value": 1}, {"from": "Projekt 29", "to": "Topic 3", "value": 1}, {"from": "Projekt 30", "to": "Topic 3", "value": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"edges": {"arrows": {"to": {"enabled": true}}, "color": {"inherit": true}, "smooth": {"forceDirection": "none"}}, "interaction": {"hover": true, "keyboard": {"enabled": true}, "navigationButtons": true, "tooltipDelay": 375}, "manipulation": {"enabled": true, "initiallyActive": true}, "physics": {"barnesHut": {"gravitationalConstant": -80000, "springLength": 250, "springConstant": 0.001}, "minVelocity": 0.75}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
