@@ -48,7 +48,8 @@ for node in digmap_net.nodes:
                 node["title"] += word + "<br>"
             else:
                 node["title"] += word + " "
-
+    else:
+        node["title"] = "Beschreibung: <br>" + titlestring
 #set buttons to customized the graph
 #digmap_net.show_buttons()
 
