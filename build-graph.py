@@ -40,7 +40,7 @@ for node in digmap_net.nodes:
     titlestring = node["title"]
     if len(titlestring) > 50:
         listofstrings = titlestring.split(" ")
-        node["title"] = "Beschreibung: <br>"
+        node["title"] = "<b>Beschreibung: </b><br>"
         i=0
         for word in listofstrings:
             i+=1
@@ -49,7 +49,7 @@ for node in digmap_net.nodes:
             else:
                 node["title"] += word + " "
     else:
-        node["title"] = "Beschreibung: <br>" + titlestring
+        node["title"] = "<b>Beschreibung: </b><br>" + titlestring
 #set buttons to customized the graph
 #digmap_net.show_buttons()
 
